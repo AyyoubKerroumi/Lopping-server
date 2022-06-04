@@ -8,9 +8,6 @@ module.exports = (sequelize, DataTypes) => {
         description:{
             type: DataTypes.STRING
         },
-        CategorieId: {
-            type: DataTypes.INTEGER,
-        },
         file:{
             type: DataTypes.STRING,
             allowNull: false

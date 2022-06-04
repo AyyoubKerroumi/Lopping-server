@@ -46,13 +46,13 @@ db.sequelize.sync({ force: false })
 // 1 to Many Relation
 
 db.categories.hasMany(db.images, {
-    foreignKey: 'image_id',
-    as: 'image'
+    foreignKey: { allowNull: false }, 
+    onDelete: 'CASCADE' 
 })
 
 db.images.belongsTo(db.categories, {
-    foreignKey: 'image_id',
-    as: 'categorie'
+    foreignKey: { allowNull: false }, 
+    onDelete: 'CASCADE' 
 })
 
 

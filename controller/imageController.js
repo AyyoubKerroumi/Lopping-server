@@ -11,17 +11,17 @@ const image = db.images;
 
 const addImage = async (req,res) => {
     try {
-        console.log(req.body);
-    //     const id = 1//req.params.id
-    // //     let data = {
-    // //     categorie_id: id,
-    // //     title : req.body.title,
-    // //     description : req.body.description,
-    // //     file : req.file.path
-    // // };
+        let data = {
+        categorieId: req.body.categorieId,
+        title : req.body.title,
+        description : req.body.description,
+        file : req.file.path
+    };
 
-    // const im = await image.create(data);
-    res.status(200).send('hello');    
+    console.log(data);
+
+    const im = await image.create(data);
+    res.status(200).send(im);    
     } catch (error) {
         res.status(500).send(error.message);
     }
@@ -31,6 +31,10 @@ const addImage = async (req,res) => {
 
 const getAllImages = async (req, res) => {
     const im = await image.findAll({});
+    // const categ_img = categories.findOne({id: im.categorieId});
+    // console.log(categ_img);
+    res.setHeader('Access-Control-Expose-Headers', 'Content-Range');
+    res.setHeader('Content-Range', 'categories 0-5/5');
     res.status(200).send(im);
 }
 
