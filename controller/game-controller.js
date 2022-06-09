@@ -19,9 +19,10 @@ const createGame = async(req, res)=>{
     try {
       const game = doc(db,"games",gameId);
       await updateDoc(game, {
-          image: results["Wi-Fi 2"][0]+":5000/"+im.dataValues.file,
+          image: "http://40.123.248.207:200/"+im.dataValues.file,
           hint:im.dataValues.title
         });
+        console.log(im);
         res.status(200).send(im);
       }catch(error) {
         res.status(400).send(error);
